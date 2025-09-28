@@ -1,0 +1,140 @@
+{
+	"components": {
+		"products": {
+			"title": "Products",
+			"featuredProducts": "Featured products"
+		},
+		"addProducts": {
+			"title": "Add products",
+			"messages": {
+				"dragAndDropFile": "Drag and drop one image to here to upload."
+			}
+		},
+		"register": {
+			"title": "Register"
+		},
+		"login": {
+			"title": "Login",
+			"tooltip": {
+				"showPassword": "Show password",
+				"hidePassword": "Hide password"
+			},
+			"message": {
+				"callToRegister": "Don't have an account yet?",
+				"callToLogin": "Already have an account?"
+			}
+		},
+		"cart": {
+			"yourItems": "Your items",
+			"totalValue": "Total value",
+			"completePurchase": "Checkout",
+			"toast": {
+				"detail": {
+					"success": {
+						"completePurchase": "Order successfully completed!"
+					}
+				}
+			}
+		},
+		"pageNotFound": {
+			"title": "Page not found",
+			"message": "The page you are trying to access does not exist."
+		}
+	},
+	"buttons": {
+		"login": "Login",
+		"logout": "Logout",
+		"register": "Register",
+		"addToCart": "Add to cart",
+		"removeFromCart": "Remove from cart",
+		"returnToInitialPage": "Return to home page",
+		"add": "Add"
+	},
+	"toast": {
+		"summary": {
+			"success": "Success!",
+			"error": "Error!",
+			"warn": "Warning!",
+			"info": "Info!"
+		},
+		"message": {
+			"error": {
+				"cantAccessCartPage": "You must be logged in to access your cart.",
+				"cantAddProductToCart": "You must be logged in to add products to your cart.",
+				"expiredSession": "Sessão expirada, por favor, faça login novamente",
+				"updateCartProductQuantity": "An error occurred while trying to update the product quantity, please try again.",
+				"removeProductFromCart": "An error occurred while trying to remove the product from the cart, please try again.",
+				"unauthorizedAccess": "You do not have permission to access this resource.",
+				"createProduct": {
+					"generic": "Undefined error when creating the product, please try again"
+				}
+			},
+			"success": {
+				"userRegistration": "User successfully registered!",
+				"addProductToCart": "Product added to cart",
+				"createProduct": "Product successfully created"
+			}
+		}
+	},
+	"form": {
+		"label": {
+			"email": "Email",
+			"password": "Password",
+			"fullName": "Full name",
+			"cpf": "CPF",
+			"phone": "Phone",
+			"confirmPassword": "Confirm password",
+			"productName": "Product name",
+			"description": "Description",
+			"image": "Image",
+			"price": "Price",
+			"chooseImage": "Choose the image"
+		},
+		"placeholder": {
+			"email": "Write your email",
+			"password": "Write your password",
+			"fullName": "Full name",
+			"confirmPassword": "Confirm password"
+		}
+	},
+	"validations": {
+		"required": "Required field",
+		"email": {
+			"invalid": "Invalid email"
+		},
+		"password": {
+			"invalid": "Password must have at least 8 characters, one letter, one number and one special character",
+			"match": "Passwords are not the same",
+			"min": "Password must have at least 8 characters"
+		},
+		"fullName": {
+			"min": "Full name must have at least 5 characters"
+		},
+		"cpf": {
+			"invalid": "CPF must have 11 digits"
+		},
+		"phone": {
+			"invalid": "Phone must have 11 digits"
+		},
+		"productName": {
+			"min": "Product name must have at least 5 characters"
+		},
+		"productDescription": {
+			"min": "Description must have at least 5 characters"
+		},
+		"productImage": {
+			"maxSize": "The image must be no larger than 1 MB.",
+			"invalidType": "The file must be a JPEG or PNG image."
+		}
+	},
+	"apiError": {
+		"generic": "Undefined error, please try again",
+		"login": {
+			"invalidCredentials": "Incorrect email or password"
+		},
+		"user": {
+			"alreadyRegistered": "Already registered user, please log in",
+			"cpfAlreadyRegistered": "Already registered user with this CPF number, please log in"
+		}
+	}
+}

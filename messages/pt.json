@@ -1,0 +1,140 @@
+{
+	"components": {
+		"products": {
+			"title": "Produtos",
+			"featuredProducts": "Produtos em destaque"
+		},
+		"addProducts": {
+			"title": "Adicionar produtos",
+			"messages": {
+				"dragAndDropFile": "Arraste e solte uma imagem para fazer o upload."
+			}
+		},
+		"register": {
+			"title": "Cadastrar-se"
+		},
+		"login": {
+			"title": "Entrar",
+			"tooltip": {
+				"showPassword": "Mostrar senha",
+				"hidePassword": "Ocultar senha"
+			},
+			"message": {
+				"callToRegister": "Ainda não tem uma conta?",
+				"callToLogin": "Já tem uma conta?"
+			}
+		},
+		"cart": {
+			"yourItems": "Seus itens",
+			"totalValue": "Valor total",
+			"completePurchase": "Finalizar compra",
+			"toast": {
+				"detail": {
+					"success": {
+						"completePurchase": "Compra finalizada com sucesso!"
+					}
+				}
+			}
+		},
+		"pageNotFound": {
+			"title": "Página não encontrada",
+			"message": "A página que você está tentando acessar não existe"
+		}
+	},
+	"buttons": {
+		"login": "Entrar",
+		"logout": "Sair",
+		"register": "Cadastrar-se",
+		"addToCart": "Adicionar ao carrinho",
+		"removeFromCart": "Remover do carrinho",
+		"returnToInitialPage": "Voltar para a página inicial",
+		"add": "Adicionar"
+	},
+	"toast": {
+		"summary": {
+			"success": "Sucesso!",
+			"error": "Erro!",
+			"warn": "Aviso!",
+			"info": "Info!"
+		},
+		"message": {
+			"error": {
+				"cantAccessCartPage": "É preciso estar logado para acessar o carrinho",
+				"cantAddProductToCart": "É preciso estar logado para adicionar produto ao carrinho",
+				"expiredSession": "Sessão expirada, por favor, faça login novamente",
+				"updateCartProductQuantity": "Ocorreu um erro ao tentar atualizar a quantidade do produto, por favor, tente novamente.",
+				"removeProductFromCart": "Ocorreu um erro ao tentar remover o produto do carrinho, por favor, tente novamente.",
+				"unauthorizedAccess": "Você não tem permissão para acessar este recurso.",
+				"createProduct": {
+					"generic": "Erro indefinido ao criar o produto, por favor, tente novamente"
+				}
+			},
+			"success": {
+				"userRegistration": "Usuário cadastrado com sucesso!",
+				"addProductToCart": "Produto adicionado ao carrinho",
+				"createProduct": "Produto criado com sucesso"
+			}
+		}
+	},
+	"form": {
+		"label": {
+			"email": "Email",
+			"password": "Senha",
+			"fullName": "Nome completo",
+			"cpf": "CPF",
+			"phone": "Telefone",
+			"confirmPassword": "Confirmar senha",
+			"productName": "Nome do produto",
+			"description": "Descrição",
+			"image": "Imagem",
+			"price": "Preço",
+			"chooseImage": "Escolha a imagem"
+		},
+		"placeholder": {
+			"email": "Digite seu email",
+			"password": "Digite sua senha",
+			"fullName": "Nome completo",
+			"confirmPassword": "Confirmar senha"
+		}
+	},
+	"validations": {
+		"required": "Campo obrigatório",
+		"email": {
+			"invalid": "Email inválido"
+		},
+		"password": {
+			"invalid": "A senha deve conter pelo menos 8 caracteres, uma letra e um caractere especial",
+			"match": "As senhas não são iguais",
+			"min": "A senha deve conter pelo menos 8 caracteres"
+		},
+		"fullName": {
+			"min": "O nome deve conter pelo menos 5 caracteres"
+		},
+		"cpf": {
+			"invalid": "O CPF deve conter 11 dígitos"
+		},
+		"phone": {
+			"invalid": "O telefone deve conter 11 dígitos"
+		},
+		"productName": {
+			"min": "O nome deve conter pelo menos 5 caracteres"
+		},
+		"productDescription": {
+			"min": "A descrição deve conter pelo menos 5 caracteres"
+		},
+		"productImage": {
+			"maxSize": "A imagem deve ter no máximo 1 MB",
+			"invalidType": "O arquivo deve ser uma imagem JPEG ou PNG"
+		}
+	},
+	"apiError": {
+		"generic": "Erro indefinido, por favor, tente novamente",
+		"login": {
+			"invalidCredentials": "Email ou senha incorreto(a)"
+		},
+		"user": {
+			"alreadyRegistered": "Usuário já cadastrado, por favor, faça login",
+			"cpfAlreadyRegistered": "Usuário já cadastrado com esse CPF, por favor, faça login"
+		}
+	}
+}
