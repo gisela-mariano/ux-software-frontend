@@ -1,0 +1,10 @@
+.product-list .cont-items.grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(230px, 235px));
+  gap: 8px;
+}
+
+.product-list .p-dataview-content {
+  display: flex;
+  justify-content: center;
+}
