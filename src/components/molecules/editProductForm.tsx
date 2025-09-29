@@ -1,6 +1,6 @@
 "use client";
 
-import { deleteProduct, updateProduct } from "@/lib";
+import { deleteProduct, getProducts, updateProduct } from "@/lib";
 import { Product, UpdateProduct } from "@/types";
 import { ProductForm } from "@components/atoms/productForm";
 import { Toast, ToastHandle } from "@components/atoms/toast";
@@ -41,6 +41,8 @@ export const EditProductForm = ({ product }: Params) => {
         detail: t("toast.message.success.deleteProduct"),
         severity: "success",
       });
+
+      await getProducts(100);
 
       router.push("/");
     } catch {
