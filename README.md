@@ -8,8 +8,8 @@ Este projeto é o frontend de uma aplicação e-commerce, desenvolvido para prop
 - [Principais Ferramentas Utilizadas](#️principais-ferramentas-utilizadas)
 - [Principais features](#principais-features)
 - [Como rodar o projeto](#️principais-ferramentas-utilizadas)
-  - [Online](#️principais-ferramentas-utilizadas)
-  - [Localmente](#️principais-ferramentas-utilizadas)
+  - [Online](#online)
+  - [Localmente](#localmente)
 - [Conceitos Apresentados](#conceitos-apresentados)
 
 ## Sobre o Projeto
@@ -144,6 +144,13 @@ Esse projeto foi publicado na vercel e está disponível no link: https://ux-sof
 - **Integração com API REST**.
 - **Boas práticas de desenvolvimento frontend**.
 - **Next.js** para SSR, rotas e otimização.
+
+## Pontos de melhoria
+
+- Não tratei o header para quando o usuário for deslogado por token expirado (se a pagina não for atualizada, o header fica mostrando ainda como se estivesse logado - botão como sair e carrinho com quantidade de itens)
+- Não fiz paginação de forma assíncrona chamando pela api
+- Pelo vercel, por algum motivo, os erros de login/cadastro não estão exibindo a mensagem corretamente então fica uma mensagem de erro genérica no toast (por ex, quando cria usuário duplicado ou tenta logar com credenciais erradas)
+- Não dei muita atenção a responsividade
 
 ---
 
