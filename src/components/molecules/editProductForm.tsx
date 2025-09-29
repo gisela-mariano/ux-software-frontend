@@ -20,13 +20,12 @@ export const EditProductForm = ({ product }: Params) => {
   const handleEdit = async (values: UpdateProduct) => {
     try {
       await updateProduct(values, product.id);
+      await getProducts(100);
 
       toastRef.current?.show({
         detail: t("toast.message.success.updateProduct"),
         severity: "success",
       });
-
-      await getProducts(100);
     } catch {
       toastRef.current?.show({
         detail: t("toast.message.error.updateProduct.generic"),
@@ -38,13 +37,12 @@ export const EditProductForm = ({ product }: Params) => {
   const handleDelete = async () => {
     try {
       await deleteProduct(product.id);
+      await getProducts(100);
 
       toastRef.current?.show({
         detail: t("toast.message.success.deleteProduct"),
         severity: "success",
       });
-
-      await getProducts(100);
 
       router.push("/");
     } catch {
