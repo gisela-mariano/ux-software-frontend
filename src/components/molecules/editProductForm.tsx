@@ -1,6 +1,6 @@
 "use client";
 
-import { deleteProduct, getProducts, updateProduct } from "@/lib";
+import { useProductStore } from "@/stores";
 import { Product, UpdateProduct } from "@/types";
 import { ProductForm } from "@components/atoms/productForm";
 import { Toast, ToastHandle } from "@components/atoms/toast";
@@ -17,10 +17,12 @@ export const EditProductForm = ({ product }: Params) => {
   const toastRef = useRef<ToastHandle>(null);
   const router = useRouter();
 
+  const deleteProduct = useProductStore((state) => state.deleteProduct);
+  const updateProduct = useProductStore((state) => state.updateProduct);
+
   const handleEdit = async (values: UpdateProduct) => {
     try {
       await updateProduct(values, product.id);
-      await getProducts(100);
 
       toastRef.current?.show({
         detail: t("toast.message.success.updateProduct"),
@@ -37,7 +39,6 @@ export const EditProductForm = ({ product }: Params) => {
   const handleDelete = async () => {
     try {
       await deleteProduct(product.id);
-      await getProducts(100);
 
       toastRef.current?.show({
         detail: t("toast.message.success.deleteProduct"),

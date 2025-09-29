@@ -23,6 +23,7 @@ export const CardCartProduct = ({ cartProduct }: Params) => {
   const format = useFormatter();
   const [quantity, setQuantity] = useState(productQuantity || 0);
   const toastRef = useRef<ToastHandle>(null);
+  const [isLoadingQuantity, setIsLoadingQuantity] = useState(false);
 
   const addProductToCart = useCartStore((state) => state.addProductToCart);
   const removeProductFromCart = useCartStore((state) => state.removeProductFromCart);
@@ -31,6 +32,8 @@ export const CardCartProduct = ({ cartProduct }: Params) => {
   );
 
   const handleChangeQuantity = async (e: InputNumberChangeEvent) => {
+    setIsLoadingQuantity(true);
+
     const newValue = e.value ?? 0;
 
     try {
@@ -52,6 +55,8 @@ export const CardCartProduct = ({ cartProduct }: Params) => {
 
       toastRef.current?.show({ detail: t("toast.message.error.updateCartProductQuantity") });
     }
+
+    setIsLoadingQuantity(false);
   };
 
   const handleRemoveFromCart = async () => {
@@ -99,8 +104,15 @@ export const CardCartProduct = ({ cartProduct }: Params) => {
                 showButtons
                 buttonLayout="horizontal"
                 decrementButtonClassName="p-button-outlined"
-                incrementButtonIcon="pi pi-plus"
-                decrementButtonIcon={quantity === 1 ? "pi pi-trash" : "pi pi-minus"}
+                disabled={isLoadingQuantity}
+                incrementButtonIcon={isLoadingQuantity ? "pi pi-spin pi-spinner" : "pi pi-plus"}
+                decrementButtonIcon={
+                  isLoadingQuantity
+                    ? "pi pi-spin pi-spinner"
+                    : quantity === 1
+                    ? "pi pi-trash"
+                    : "pi pi-minus"
+                }
                 min={0}
                 size={1}
               />

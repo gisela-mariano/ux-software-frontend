@@ -1,6 +1,6 @@
 "use client";
 
-import { createProduct, getProducts } from "@/lib";
+import { useProductStore } from "@/stores";
 import { CreateProduct } from "@/types";
 import { ProductForm } from "@components/atoms/productForm";
 import { Toast, ToastHandle } from "@components/atoms/toast";
@@ -11,10 +11,11 @@ export const CreateProductForm = () => {
   const t = useTranslations();
   const toastRef = useRef<ToastHandle>(null);
 
+  const createProduct = useProductStore((state) => state.createProduct);
+
   const handleCreate = async (values: CreateProduct) => {
     try {
       await createProduct(values);
-      await getProducts(100);
 
       toastRef.current?.show({
         detail: t("toast.message.success.createProduct"),
