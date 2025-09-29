@@ -16,9 +16,10 @@ import { useEffect, useRef, useState } from "react";
 
 type Params = {
   product: Product;
+  showAddToCartButton?: boolean;
 };
 
-export const CardProduct = ({ product }: Params) => {
+export const CardProduct = ({ product, showAddToCartButton = true }: Params) => {
   const t = useTranslations();
   const locale = useLocale();
   const format = useFormatter();
@@ -114,15 +115,17 @@ export const CardProduct = ({ product }: Params) => {
               {formattedPrice}
             </span>
 
-            <Button
-              icon="pi pi-cart-plus"
-              rounded
-              tooltip={t("buttons.addToCart")}
-              onClick={(e) => {
-                e.stopPropagation();
-                handleAddProductToCart();
-              }}
-            />
+            {showAddToCartButton && (
+              <Button
+                icon="pi pi-cart-plus"
+                rounded
+                tooltip={t("buttons.addToCart")}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleAddProductToCart();
+                }}
+              />
+            )}
           </footer>
         </main>
       </div>

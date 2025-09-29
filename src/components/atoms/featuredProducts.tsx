@@ -12,7 +12,7 @@ export const FeaturedProducts = ({ products }: Params) => {
   const productTemplate = (product: Product) => {
     if (!products) return null;
 
-    return <CardProduct product={product} key={product.id} />;
+    return <CardProduct product={product} key={product.id} showAddToCartButton={false} />;
   };
 
   return (
