@@ -19,7 +19,7 @@ export type ProductResponse = {
 export type CreateProduct = {
   name: string;
   description: string;
-  image: string;
+  imageUrl: string;
   price: number;
 };
 

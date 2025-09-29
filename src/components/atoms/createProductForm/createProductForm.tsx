@@ -6,22 +6,23 @@ import "@components/atoms/createProductForm/createProductForm.css";
 import { Toast, ToastHandle } from "@components/atoms/toast";
 import { useFormik } from "formik";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { Button } from "primereact/button";
-import { FileUpload, FileUploadHandlerEvent, FileUploadSelectEvent } from "primereact/fileupload";
 import { InputNumber } from "primereact/inputnumber";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const CreateProductForm = () => {
   const t = useTranslations();
   const toastRef = useRef<ToastHandle>(null);
+  const [isValidImage, setIsValidImage] = useState(false);
 
   const formik = useFormik({
     initialValues: {
       name: "",
       description: "",
-      image: "",
+      imageUrl: "",
       price: 0,
     },
     validationSchema: createProductSchema,
@@ -33,6 +34,8 @@ export const CreateProductForm = () => {
           detail: t("toast.message.success.createProduct"),
           severity: "success",
         });
+
+        resetForm();
       } catch {
         toastRef.current?.show({
           detail: t("toast.message.error.createProduct.generic"),
@@ -42,19 +45,39 @@ export const CreateProductForm = () => {
     },
   });
 
-  const { errors, touched, values, handleChange, handleSubmit, setFieldValue } = formik;
+  const { errors, touched, values, handleChange, handleSubmit, setFieldValue, resetForm } = formik;
 
   const erroredData = {
     name: !!(touched.name && errors.name),
     description: !!(touched.description && errors.description),
-    image: !!(touched.image && errors.image),
+    imageUrl: !!(touched.imageUrl && errors.imageUrl),
     price: !!(touched.price && errors.price),
   };
 
-  const handleFile = (event: FileUploadHandlerEvent | FileUploadSelectEvent) => {
-    const file = event.files[0];
-    setFieldValue("image", file);
-  };
+  const selectedImageContent = isValidImage ? (
+    <div className="mt-4">
+      <Image
+        alt="product image"
+        src={values.imageUrl}
+        width={100}
+        height={100}
+        style={{ objectFit: "contain" }}
+      />
+    </div>
+  ) : null;
+
+  useEffect(() => {
+    if (!values.imageUrl) {
+      setIsValidImage(false);
+      return;
+    }
+
+    const img = new window.Image();
+    img.src = values.imageUrl;
+
+    img.onload = () => setIsValidImage(true);
+    img.onerror = () => setIsValidImage(false);
+  }, [values.imageUrl]);
 
   return (
     <>
@@ -98,25 +121,22 @@ export const CreateProductForm = () => {
         </div>
 
         <div className="cont-input">
-          <label htmlFor="image" className={`${erroredData.image && "error-text"}`}>
+          <label htmlFor="image" className={`${erroredData.imageUrl && "error-text"}`}>
             {t("form.label.image")}
           </label>
 
-          <div className="w-full">
-            <FileUpload
-              name="file"
-              url={"/api/upload"}
-              accept="image/*"
-              maxFileSize={1000000}
-              emptyTemplate={
-                <p className="m-0">{t("components.addProducts.messages.dragAndDropFile")}</p>
-              }
-              chooseLabel={t("form.label.chooseImage")}
-              onSelect={(e: FileUploadSelectEvent) => handleFile(e)}
-            />
-          </div>
+          <InputText
+            id="image"
+            name="imageUrl"
+            value={values.imageUrl}
+            placeholder={t("form.label.image")}
+            invalid={erroredData.imageUrl}
+            onChange={handleChange}
+          />
 
-          {erroredData.image && <small className="error-text">{t(errors.image!)}</small>}
+          {selectedImageContent}
+
+          {erroredData.imageUrl && <small className="error-text">{t(errors.imageUrl!)}</small>}
         </div>
 
         <div className="cont-input">
