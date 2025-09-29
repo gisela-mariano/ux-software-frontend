@@ -6,6 +6,7 @@ Este projeto é o frontend de uma aplicação e-commerce, desenvolvido para prop
 
 - [Sobre o Projeto](#sobre-o-projeto)
 - [Principais Ferramentas Utilizadas](#️principais-ferramentas-utilizadas)
+- [Principais features](#principais-features)
 - [Como rodar o projeto](#️principais-ferramentas-utilizadas)
   - [Online](#️principais-ferramentas-utilizadas)
   - [Localmente](#️principais-ferramentas-utilizadas)
@@ -62,6 +63,13 @@ A padronização dos estilos segue o padrão BEM, facilitando o entendimento e m
 ### 🌍 Internacionalização
 
 Utilizamos **next-intl** para oferecer suporte a múltiplos idiomas, tornando a aplicação adaptável a diferentes regiões.
+
+## Principais features:
+
+- Criação/Login de usuários;
+- Qualquer usuário pode visualizar os produtos (não precisa estar logado);
+- Apenas usuários logados podem adicionar/remover produtos do carrinho;
+- Apenas usuários administradores podem criar/editar/remover produtos.
 
 ## Como rodar o projeto
 
