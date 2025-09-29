@@ -2,7 +2,6 @@
 
 import { createProductSchema } from "@/schemas";
 import { CreateProduct, Product } from "@/types";
-import "@components/atoms/createProductForm/createProductForm.css";
 import { useFormik } from "formik";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
