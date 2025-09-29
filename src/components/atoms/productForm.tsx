@@ -1,9 +1,8 @@
 "use client";
 
-import { createProduct } from "@/lib";
 import { createProductSchema } from "@/schemas";
+import { CreateProduct, Product } from "@/types";
 import "@components/atoms/createProductForm/createProductForm.css";
-import { Toast, ToastHandle } from "@components/atoms/toast";
 import { useFormik } from "formik";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -11,41 +10,32 @@ import { Button } from "primereact/button";
 import { InputNumber } from "primereact/inputnumber";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-export const CreateProductForm = () => {
+type Props = {
+  initialValues?: Partial<Product>;
+  mode?: "create" | "update";
+  onSubmit: (values: CreateProduct) => void;
+  onDelete?: () => Promise<void> | void;
+};
+
+export const ProductForm = ({ initialValues, mode, onSubmit, onDelete }: Props) => {
   const t = useTranslations();
-  const toastRef = useRef<ToastHandle>(null);
   const [isValidImage, setIsValidImage] = useState(false);
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      description: "",
-      imageUrl: "",
-      price: 0,
+      name: initialValues?.name || "",
+      description: initialValues?.description || "",
+      imageUrl: initialValues?.imageUrl || "",
+      price: initialValues?.price || 0,
     },
     validationSchema: createProductSchema,
-    onSubmit: async (values) => {
-      try {
-        await createProduct(values);
-
-        toastRef.current?.show({
-          detail: t("toast.message.success.createProduct"),
-          severity: "success",
-        });
-
-        resetForm();
-      } catch {
-        toastRef.current?.show({
-          detail: t("toast.message.error.createProduct.generic"),
-          severity: "error",
-        });
-      }
-    },
+    enableReinitialize: true,
+    onSubmit,
   });
 
-  const { errors, touched, values, handleChange, handleSubmit, setFieldValue, resetForm } = formik;
+  const { errors, touched, values, handleChange, handleSubmit, setFieldValue } = formik;
 
   const erroredData = {
     name: !!(touched.name && errors.name),
@@ -81,8 +71,6 @@ export const CreateProductForm = () => {
 
   return (
     <>
-      <Toast ref={toastRef} />
-
       <form className="cont-form" onSubmit={handleSubmit}>
         <div className="cont-input">
           <label htmlFor="productName" className={`${erroredData.name && "error-text"}`}>
@@ -121,15 +109,15 @@ export const CreateProductForm = () => {
         </div>
 
         <div className="cont-input">
-          <label htmlFor="image" className={`${erroredData.imageUrl && "error-text"}`}>
-            {t("form.label.image")}
+          <label htmlFor="imageUrl" className={`${erroredData.imageUrl && "error-text"}`}>
+            {t("form.label.imageUrl")}
           </label>
 
           <InputText
-            id="image"
+            id="imageUrl"
             name="imageUrl"
             value={values.imageUrl}
-            placeholder={t("form.label.image")}
+            placeholder={t("form.label.imageUrl")}
             invalid={erroredData.imageUrl}
             onChange={handleChange}
           />
@@ -150,7 +138,7 @@ export const CreateProductForm = () => {
             value={values.price}
             mode="decimal"
             minFractionDigits={2}
-            placeholder="00,00"
+            placeholder="00.00"
             invalid={erroredData.price}
             onValueChange={(e) => setFieldValue("price", e.value)}
           />
@@ -158,7 +146,21 @@ export const CreateProductForm = () => {
           {erroredData.price && <small className="error-text">{t(errors.price!)}</small>}
         </div>
 
-        <Button className="mt-4!" label={t("buttons.add")} type="submit" />
+        {mode === "create" ? (
+          <Button className="mt-4!" label={t("buttons.add")} type="submit" />
+        ) : (
+          <div className="mt-4! flex gap-4 justify-end">
+            <Button
+              label={t("buttons.removeProduct")}
+              outlined
+              onClick={(e) => {
+                e.preventDefault();
+                if (onDelete) onDelete();
+              }}
+            />
+            <Button label={t("buttons.edit")} type="submit" />
+          </div>
+        )}
       </form>
     </>
   );

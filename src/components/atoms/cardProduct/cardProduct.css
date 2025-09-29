@@ -42,6 +42,13 @@
   transform: translateY(0);
 }
 
+@media (max-width: 768px) {
+  .card.vertical .card__action-btn {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .card__cont-image {
   height: 150px;
   display: flex;

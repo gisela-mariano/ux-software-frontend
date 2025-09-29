@@ -10,6 +10,9 @@
 				"dragAndDropFile": "Arraste e solte uma imagem para fazer o upload."
 			}
 		},
+		"editProducts": {
+			"title": "Editar produto"
+		},
 		"register": {
 			"title": "Cadastrar-se"
 		},
@@ -49,7 +52,8 @@
 		"removeFromCart": "Remover do carrinho",
 		"returnToInitialPage": "Voltar para a página inicial",
 		"add": "Adicionar",
-		"edit": "Editar"
+		"edit": "Editar",
+		"removeProduct": "Remover produto"
 	},
 	"toast": {
 		"summary": {
@@ -68,13 +72,21 @@
 				"unauthorizedAccess": "Você não tem permissão para acessar este recurso.",
 				"createProduct": {
 					"generic": "Erro indefinido ao criar o produto, por favor, tente novamente"
+				},
+				"updateProduct": {
+					"generic": "Erro indefinido ao editar o produto, por favor, tente novamente"
+				},
+				"deleteProduct": {
+					"generic": "Erro indefinido ao remover o produto, por favor, tente novamente"
 				}
 			},
 			"success": {
 				"userRegistration": "Usuário cadastrado com sucesso!",
 				"addProductToCart": "Produto adicionado ao carrinho",
 				"createProduct": "Produto criado com sucesso",
-				"removeProductFromCart": "Produto removido do carrinho com sucesso"
+				"removeProductFromCart": "Produto removido do carrinho com sucesso",
+				"updateProduct": "Produto editado com sucesso",
+				"deleteProduct": "Produto removido com sucesso"
 			}
 		}
 	},
@@ -89,6 +101,7 @@
 			"productName": "Nome do produto",
 			"description": "Descrição",
 			"image": "Imagem",
+			"imageUrl": "Url da imagem",
 			"price": "Preço",
 			"chooseImage": "Escolha a imagem"
 		},
@@ -127,6 +140,9 @@
 		"productImage": {
 			"maxSize": "A imagem deve ter no máximo 1 MB",
 			"invalidType": "O arquivo deve ser uma imagem JPEG ou PNG"
+		},
+		"imageUrl": {
+			"invalid": "Url da imagem inválida"
 		}
 	},
 	"apiError": {

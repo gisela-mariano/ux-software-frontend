@@ -41,6 +41,10 @@ export const CardProduct = ({ product }: Params) => {
     router.push(`/products/${product.id}`);
   };
 
+  const handleGoToEditPage = () => {
+    router.push(`/admin/edit/products/${product.id}`);
+  };
+
   const handleAddProductToCart = async () => {
     if (!isAuthenticated) {
       toastRef.current?.show({
@@ -94,6 +98,10 @@ export const CardProduct = ({ product }: Params) => {
               rounded
               size="small"
               tooltip={t("buttons.edit")}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleGoToEditPage();
+              }}
             />
           )}
         </div>

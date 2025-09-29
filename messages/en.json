@@ -10,6 +10,9 @@
 				"dragAndDropFile": "Drag and drop one image to here to upload."
 			}
 		},
+		"editProducts": {
+			"title": "Edit product"
+		},
 		"register": {
 			"title": "Register"
 		},
@@ -49,7 +52,8 @@
 		"removeFromCart": "Remove from cart",
 		"returnToInitialPage": "Return to home page",
 		"add": "Add",
-		"edit": "Edit"
+		"edit": "Edit",
+		"removeProduct": "Remove product"
 	},
 	"toast": {
 		"summary": {
@@ -68,13 +72,21 @@
 				"unauthorizedAccess": "You do not have permission to access this resource.",
 				"createProduct": {
 					"generic": "Undefined error when creating the product, please try again"
+				},
+				"updateProduct": {
+					"generic": "Undefined error when updating the product, please try again"
+				},
+				"deleteProduct": {
+					"generic": "Undefined error when deleting the product, please try again"
 				}
 			},
 			"success": {
 				"userRegistration": "User successfully registered!",
 				"addProductToCart": "Product added to cart",
 				"createProduct": "Product successfully created",
-				"removeProductFromCart": "Product successfully removed from cart"
+				"removeProductFromCart": "Product successfully removed from cart",
+				"updateProduct": "Product successfully updated",
+				"deleteProduct": "Product successfully deleted"
 			}
 		}
 	},
@@ -89,6 +101,7 @@
 			"productName": "Product name",
 			"description": "Description",
 			"image": "Image",
+			"imageUrl": "Image url",
 			"price": "Price",
 			"chooseImage": "Choose the image"
 		},
@@ -127,6 +140,9 @@
 		"productImage": {
 			"maxSize": "The image must be no larger than 1 MB.",
 			"invalidType": "The file must be a JPEG or PNG image."
+		},
+		"imageUrl": {
+			"invalid": "Invalid image url"
 		}
 	},
 	"apiError": {

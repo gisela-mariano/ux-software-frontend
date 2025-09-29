@@ -95,7 +95,7 @@ export const Header = () => {
 
               {isMounted && userRole === UserRoles.ADMIN && (
                 <li>
-                  | <Link href="/admin/products">{t("components.addProducts.title")}</Link>
+                  | <Link href="/admin/add/products">{t("components.addProducts.title")}</Link>
                 </li>
               )}
             </ul>

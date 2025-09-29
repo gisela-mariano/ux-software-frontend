@@ -23,4 +23,6 @@ export type CreateProduct = {
   price: number;
 };
 
+export type UpdateProduct = Partial<CreateProduct>;
+
 export type CreateProductResponse = Product;

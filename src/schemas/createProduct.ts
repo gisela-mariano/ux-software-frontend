@@ -6,6 +6,6 @@ export const createProductSchema = yup.object().shape({
     .string()
     .required("validations.required")
     .min(5, "validations.productDescription.min"),
-  imageUrl: yup.string().required("validations.required"),
+  imageUrl: yup.string().url("validations.imageUrl.invalid").required("validations.required"),
   price: yup.number().required("validations.required"),
 });
