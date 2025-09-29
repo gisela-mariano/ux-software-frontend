@@ -1,14 +1,18 @@
+"use client";
+
 import { useAuthStore } from "@/stores";
 import { useCartStore } from "@/stores/cartStore";
+import { UserRoles } from "@/types";
 import { Product } from "@/types/products";
 import { currencyMapper, DOLLAR_VALUE } from "@/utils/constants";
 import "@components/atoms/cardProduct/cardProduct.css";
 import { Toast, ToastHandle } from "@components/atoms/toast";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Button } from "primereact/button";
 import { Tooltip } from "primereact/tooltip";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Params = {
   product: Product;
@@ -19,15 +23,23 @@ export const CardProduct = ({ product }: Params) => {
   const locale = useLocale();
   const format = useFormatter();
   const toastRef = useRef<ToastHandle>(null);
+  const router = useRouter();
+
+  const [isMounted, setIsMounted] = useState(false);
 
   const addProductToCart = useCartStore((state) => state.addProductToCart);
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const userRole = useAuthStore((state) => state.role);
 
   const currency = currencyMapper[locale];
 
   const price = locale === "pt" ? product.price * DOLLAR_VALUE : product.price;
 
   const formattedPrice = format.number(price, { style: "currency", currency });
+
+  const handleGoToProductInfo = () => {
+    router.push(`/products/${product.id}`);
+  };
 
   const handleAddProductToCart = async () => {
     if (!isAuthenticated) {
@@ -54,15 +66,36 @@ export const CardProduct = ({ product }: Params) => {
     }
   };
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <>
       <Toast ref={toastRef} />
 
       <Tooltip target=".custom-target-tooltip" />
 
-      <div className={`card vertical rounded-2xl`}>
+      <div
+        className={"card vertical rounded-2xl cursor-pointer"}
+        role="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          handleGoToProductInfo();
+        }}
+      >
         <div className="card__cont-image">
           <Image alt={product.name} src={product.imageUrl} width={150} height={150} />
+
+          {isMounted && userRole === UserRoles.ADMIN && (
+            <Button
+              icon="pi pi-pencil"
+              className="card__action-btn"
+              rounded
+              size="small"
+              tooltip={t("buttons.edit")}
+            />
+          )}
         </div>
 
         <main className="card__main">
@@ -77,7 +110,10 @@ export const CardProduct = ({ product }: Params) => {
               icon="pi pi-cart-plus"
               rounded
               tooltip={t("buttons.addToCart")}
-              onClick={handleAddProductToCart}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleAddProductToCart();
+              }}
             />
           </footer>
         </main>

@@ -48,7 +48,8 @@
 		"addToCart": "Adicionar ao carrinho",
 		"removeFromCart": "Remover do carrinho",
 		"returnToInitialPage": "Voltar para a página inicial",
-		"add": "Adicionar"
+		"add": "Adicionar",
+		"edit": "Editar"
 	},
 	"toast": {
 		"summary": {
@@ -72,7 +73,8 @@
 			"success": {
 				"userRegistration": "Usuário cadastrado com sucesso!",
 				"addProductToCart": "Produto adicionado ao carrinho",
-				"createProduct": "Produto criado com sucesso"
+				"createProduct": "Produto criado com sucesso",
+				"removeProductFromCart": "Produto removido do carrinho com sucesso"
 			}
 		}
 	},
