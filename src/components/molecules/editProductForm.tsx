@@ -25,6 +25,8 @@ export const EditProductForm = ({ product }: Params) => {
         detail: t("toast.message.success.updateProduct"),
         severity: "success",
       });
+
+      await getProducts(100);
     } catch {
       toastRef.current?.show({
         detail: t("toast.message.error.updateProduct.generic"),
